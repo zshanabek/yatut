@@ -3,7 +3,10 @@ class AttendancesController < ApplicationController
   def create
     @attendance = current_subject.attendances.build(attendance_params)
     @attendance.subject_id = current_subject.id
-    if current_subject.longitude == @attendance.longitude && current_subject.latitude == @attendance.latitude
+    point1 = [@attendance.latitude, @attendance.longitude]
+    point2 = [current_subject.latitude, current_subject.longitude]
+    in_circle = Geocoder::Calculations.distance_between(point1, point2) < current_subject.radius
+    if in_circle == true
       if @attendance.save!
         render json: @attendance, status: :created   
       else
