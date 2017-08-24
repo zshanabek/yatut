@@ -4,6 +4,23 @@
   <strong>Name:</strong>
   <%= @subject.name %>
 </p>
+<p>
+  <strong>Longitude:</strong>
+  <%= @subject.longitude %>
+</p>
+<p>
+  <strong>Latitude:</strong>
+  <%= @subject.latitude %>
+</p>
+<p>
+  <strong>Radius:</strong>
+  <%= @subject.radius %>
+</p>
+<p>
+  <strong>Address:</strong>
+  <%= @subject.address %>
+</p>
+
 
 <%= link_to 'Edit', edit_subject_path(@subject) %> |
 <%= link_to 'Back', subjects_path %>
