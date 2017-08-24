@@ -13,7 +13,7 @@ class AttendancesController < ApplicationController
         head(:unprocessable_entity)
       end
     else
-      render json: {faild: 'Ты не в зоне класса'}, status: :forbidden
+      render json: {faild: 'Не надо так. Вы не в радиусе класса'}, status: :forbidden
     end
   end
 
