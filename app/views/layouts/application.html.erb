@@ -9,7 +9,33 @@
   </head>
 
   <body>
-    <div class="container">
+        <nav class="nav-wrp nav-3 dark">
+            <div class="container">  
+              <div class="nav-header">
+                <a class="navbar-brand" href="#"><img src="images/logo1.png" alt="Brand logo" class=""></a>
+                <a class="nav-handle fs-touch-element" data-nav=".nav"><i class="fa fa-bars"></i></a>	
+              </div>
+              
+              <div class="nav vm-item">
+                <ul class="nav-links">
+                  <li class=""><%= link_to "Предметы", subjects_path %></li>
+                </ul>
+                <div class="nav-other">          
+                          <% if user_signed_in? %>
+                              <%= link_to "Мой аккаунт", subjects_path,  class:"btn btn-primary btn-sm" %>
+                              <%= link_to('Выйти', destroy_user_session_path, class:"btn btn-primary btn-sm", method: :delete) %>                                      
+                          <% else %>
+                              <%= link_to "Зарегистрироваться", new_user_registration_path,  class:"btn btn-primary btn-sm" %>
+                              <%= link_to "Войти", new_user_session_path, class:"btn btn-primary btn-sm" %>
+                          <% end %>
+                      </div>
+              </div><!-- /.nav --> 
+              
+            </div><!-- /.container --> 
+          </nav>
+        <p class="notice "><%= notice%></p>
+        <p class="alert"><%= alert%></p>  
+        <div class="container">
       <%= yield %>
     </div>
   </body>

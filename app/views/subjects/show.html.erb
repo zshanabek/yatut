@@ -1,26 +1,25 @@
-<p id="notice"><%= notice %></p>
+<!-- <p id="notice"><%= notice %></p> -->
+<h1>
+    <%= @subject.name %>    
+</h1>
 
 <p>
-  <strong>Name:</strong>
-  <%= @subject.name %>
-</p>
-<p>
-  <strong>Longitude:</strong>
+  <strong>Долгота:</strong>
   <%= @subject.longitude %>
 </p>
 <p>
-  <strong>Latitude:</strong>
+  <strong>Широта:</strong>
   <%= @subject.latitude %>
 </p>
 <p>
-  <strong>Radius:</strong>
+  <strong>Радиус:</strong>
   <%= @subject.radius %>
 </p>
 <p>
-  <strong>Address:</strong>
+  <strong>Адрес:</strong>
   <%= @subject.address %>
 </p>
-
-
-<%= link_to 'Edit', edit_subject_path(@subject) %> |
-<%= link_to 'Back', subjects_path %>
+<%= link_to 'Список посещаемости', subject_attendances_path(@subject), class:"btn btn-default" %> <br/>
+<%= link_to 'Удалить', @subject, method: :delete, data: { confirm: 'Are you sure?' }  %> |
+<%= link_to 'Редактировать', edit_subject_path(@subject) %> |
+<%= link_to 'Назад', subjects_path %>

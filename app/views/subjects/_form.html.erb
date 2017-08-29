@@ -12,26 +12,26 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name%>
+    <%= form.label 'Название' %>
+    <%= form.text_field :name, class: "form-control"%>
   </div>
 
   <div class="field">
-    <%= form.label :longitude %>
-    <%= form.number_field :longitude, step: :any %>
+    <%= form.label 'Долгота' %>
+    <%= form.number_field :longitude, step: :any, class: "form-control" %>
   </div>
 
   <div class="field">
-    <%= form.label :latitude %>
-    <%= form.number_field :latitude , step: :any%>
+    <%= form.label 'Широта' %>
+    <%= form.number_field :latitude , step: :any, class: "form-control"%>
   </div>
 
   <div class="field">
-    <%= form.label :radus %>
-    <%= form.number_field :radius %>
+    <%= form.label 'Радиус' %>
+    <%= form.number_field :radius, class: "form-control" %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit 'Создать предмет', class:"btn btn-primary"  %>
   </div>
 <% end %>

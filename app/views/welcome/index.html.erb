@@ -1,0 +1,214 @@
+<div id="page">
+		
+<!-- Navigation -->
+<nav class="nav-wrp nav-3 dark">
+	<div class="container">
+		
+		<div class="nav-header">
+			<a class="navbar-brand" href="#"><img src="images/logo1.png" alt="Brand logo" class=""></a>
+			<a class="nav-handle fs-touch-element" data-nav=".nav"><i class="fa fa-bars"></i></a>	
+		</div>
+		
+		<div class="nav vm-item">
+			<ul class="nav-links">
+				<li class=""><a href="#aboutus" class="">About us</a></li>
+				<li class=""><a href="#feature" class="">Feature</a></li>
+				<li class=""><a href="#price" class="">Pricing</a></li>
+				<li class=""><a href="#download" class="">Download</a></li>
+				<li class=""><a href="#contact" class="">Contact us</a></li>
+			</ul>
+			<div class="nav-other">          
+                <% if user_signed_in? %>
+                    <%= link_to "Мой аккаунт", subjects_path,  class:"btn btn-primary btn-sm" %>
+                <% else %>
+                    <%= link_to "Зарегистрироваться", new_user_registration_path,  class:"btn btn-primary btn-sm" %>
+                    <%= link_to "Войти", new_user_session_path, class:"btn btn-primary btn-sm" %>
+                <% end %>
+            </div>
+		</div><!-- /.nav --> 
+		
+	</div><!-- /.container --> 
+</nav><!-- /.nav-wrp --><!-- Intro -->
+<section class="intro-section intro-section-6">
+	<div class="container">
+
+		<div class="info-wrp cm-item">
+			<h2 class="main-text">Quick &amp; Easy to Manage Projects</h2>
+			<p class="sub-text">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat.</p>
+			<a href="#" class="btn btn-default btn1">Try for FREE</a>
+			<a href="#" class="btn btn-default btn2">Learn more</a>
+		</div>
+	
+    </div><!-- /.container -->
+    
+	<div class="bg-section bg-cover bg-cc full-wh" data-bg="images/bg7.jpg"><b class="full-wh"></b>
+		<!-- BACKGROUND VIDEO -->
+		<a class="videobg" data-property="{videoURL:'dorZ3vag5PI',containment:'.intro-section-6 .bg-section',showControls:true, autoPlay:true, loop:true, vol:50, mute:true, startAt:10, opacity:1, addRaster:true, quality:'default', optimizeDisplay:true}"></a>
+	</div>
+</section><!-- /.intro-section --><!-- Features -->
+<section class="feature-section dark feature-section-3 fs-equalize-element">
+	<div class="container">
+		<h2 class="title">Features display section</h2>
+		<p class="title-sub">
+			Lorem ipsum dolor sit amet, consetetur sadipscing elitr diam nonumy<br>
+			eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+		</p>
+
+		<div class="feature-img"> <%= image_tag "screen-img1.png", class: "img-responsive", alt:"Screen image" %>  </div>
+		
+		<div class="row eqh gt50 fs-equalize-element">
+
+			<div class="col-lg-4 col-sm-6" style="height: 130px;">
+				<div class="info-box info-box4">
+					<div class="img"><i class="fa fa-television"></i></div>
+					<div class="info" style="height: 95px;">
+						<h2 class="hd">Lorem ipsum dolor</h2>
+						<p class="sub-txt">Lorem ipsum dolor sit ametconsetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore</p>
+					</div>
+				</div><!-- /.info-box -->
+			</div>
+
+			<div class="col-lg-4 col-sm-6" style="height: 130px;">
+				<div class="info-box info-box4">
+					<div class="img"><i class="fa fa-object-group"></i></div>
+					<div class="info" style="height: 95px;">
+						<h2 class="hd">Lorem ipsum dolor</h2>
+						<p class="sub-txt">Lorem ipsum dolor sit ametconsetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore</p>
+					</div>
+				</div><!-- /.info-box -->
+			</div>
+
+			<div class="col-lg-4 col-sm-6" style="height: 130px;">
+				<div class="info-box info-box4">
+					<div class="img"><i class="fa fa-map-o"></i></div>
+					<div class="info" style="height: 95px;">
+						<h2 class="hd">Lorem ipsum dolor</h2>
+						<p class="sub-txt">Lorem ipsum dolor sit ametconsetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore</p>
+					</div>
+				</div><!-- /.info-box -->
+			</div>
+			
+			<div class="col-lg-4 col-sm-6" style="height: 130px;">
+				<div class="info-box info-box4">
+					<div class="img"><i class="fa fa-diamond"></i></div>
+					<div class="info" style="height: 95px;">
+						<h2 class="hd">Lorem ipsum dolor</h2>
+						<p class="sub-txt">Lorem ipsum dolor sit ametconsetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore</p>
+					</div>
+				</div><!-- /.info-box -->
+			</div>
+
+			<div class="col-lg-4 col-sm-6" style="height: 130px;">
+				<div class="info-box info-box4">
+					<div class="img"><i class="fa fa-heart-o"></i></div>
+					<div class="info" style="height: 95px;">
+						<h2 class="hd">Lorem ipsum dolor</h2>
+						<p class="sub-txt">Lorem ipsum dolor sit ametconsetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore</p>
+					</div>
+				</div><!-- /.info-box -->
+			</div>
+
+			<div class="col-lg-4 col-sm-6" style="height: 130px;">
+				<div class="info-box info-box4">
+					<div class="img"><i class="fa fa-paperclip"></i></div>
+					<div class="info" style="height: 95px;">
+						<h2 class="hd">Lorem ipsum dolor</h2>
+						<p class="sub-txt">Lorem ipsum dolor sit ametconsetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore</p>
+					</div>
+				</div><!-- /.info-box -->
+			</div>
+
+		</div>
+
+	</div><!-- /.container -->
+</section><!-- /.feature-section --><!-- Features -->
+<section class="feature-section dark feature-section-6">
+	<div class="container">
+		<div class="row eqh fs-equalize-element">
+            <div class="col-md-4 col-md-push-8" style="height: 599px;"> <%= image_tag "iphone-img.png", class: "img-responsive", alt:"Screen image" %> </div>
+			<div class="col-md-7 col-md-pull-4" style="height: 599px;">
+				<div class="content vm-item">
+					<h2 class="title">Features display section</h2>
+					<p class="title-sub">
+						Lorem ipsum dolor sit amet, consetetur sadipscing elitr diam nonumyeirmod tempor invidunt ut labore etdolore.
+					</p>
+					
+					<div class="row">
+						<div class="col-sm-6">
+							<div class="info-box info-box5">
+								<div class="img"><i class="fa fa-television"></i></div>
+								<div class="info">
+									<h2 class="hd">Lorem ipsum dolor</h2>
+									<p class="sub-txt">Lorem ipsum dolor sit ametconsetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore</p>
+								</div>
+							</div><!-- /.info-box -->		
+						</div>
+						
+						<div class="col-sm-6">
+							<div class="info-box info-box5">
+								<div class="img"><i class="fa fa-object-group"></i></div>
+								<div class="info">
+									<h2 class="hd">Lorem ipsum dolor</h2>
+									<p class="sub-txt">Lorem ipsum dolor sit ametconsetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore</p>
+								</div>
+							</div><!-- /.info-box -->
+						</div>
+
+						<div class="col-sm-6">
+							<div class="info-box info-box5">
+								<div class="img"><i class="fa fa-map-o"></i></div>
+								<div class="info">
+									<h2 class="hd">Lorem ipsum dolor</h2>
+									<p class="sub-txt">Lorem ipsum dolor sit ametconsetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore</p>
+								</div>
+							</div><!-- /.info-box -->
+						</div>
+						
+						<div class="col-sm-6">
+							<div class="info-box info-box5">
+								<div class="img"><i class="fa fa-diamond"></i></div>
+								<div class="info">
+									<h2 class="hd">Lorem ipsum dolor</h2>
+									<p class="sub-txt">Lorem ipsum dolor sit ametconsetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore</p>
+								</div>
+							</div><!-- /.info-box -->
+						</div>
+					</div><!-- /.row -->
+				</div><!-- /.content -->
+			</div><!-- /.col-lg-6 -->
+		</div><!-- /.row -->
+	</div><!-- /.container -->
+</section><!-- /.feature-section --><!-- Footer section -->
+<section class="footer-section footer-section-6">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6">
+				<p class="">PO Box 16122, Collins Street West,<br>Victoria 8007, Australia</p>
+
+				<div class="social">
+					<a href="#" class=""><i class="fa fa-facebook"></i></a>
+					<a href="#" class=""><i class="fa fa-twitter"></i></a>
+					<a href="#" class=""><i class="fa fa-google-plus"></i></a>
+					<a href="#" class=""><i class="fa fa-youtube-play"></i></a>
+					<a href="#" class=""><i class="fa fa-instagram"></i></a>	
+				</div><!-- /Social -->
+			</div>
+			<div class="col-md-6">
+				<div class="newsletter">
+					<h6 class="hd">Subscribe for updates</h6>
+					<form action="form-data/notify-me.php" class="form-widget" data-formtype="newsletter" data-msgpos="append" novalidate="novalidate">
+						<div class="field-group">
+							<input class="form-control" data-label="Email" required="" data-msg="Please enter email." type="email" name="email" placeholder="Enter your email" aria-required="true">
+							<button type="submit" id="submit" class="btn btn-primary" disabled="disabled"><i class="fa fa-envelope-o"></i></button>
+						</div>
+						<div class="msg-wrp"></div>
+					</form> <!-- /form -->	
+				</div>
+			</div>
+		</div>
+		<hr class="">
+		<p class="copyright">R.Gen - Landing page bundle © 2015</p>
+		
+	</div>
+</section><!-- ./Footer section --></div>
+<!-- /#page --> 
