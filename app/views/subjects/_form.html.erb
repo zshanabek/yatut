@@ -30,6 +30,25 @@
     <%= form.label 'Радиус' %>
     <%= form.number_field :radius, class: "form-control" %>
   </div>
+  
+  <div class="field">
+    <%= form.label 'Начинается в' %>
+    <%= form.time_select :starts_at, :value => subject.starts_at, :default => Time.now %>
+  </div>
+  <div class="field">
+    <%= form.label 'Заканчивается в' %>
+    <%= form.time_select :ends_at, :value => subject.ends_at, :default => Time.now %>
+   </div>
+        
+  <div class="field">
+    <%= form.label 'Дата начала' %>
+    <%= form.datetime_select :start_time, class: "form-control" %>
+  </div>
+
+  <!-- <div class="field">
+    <%= form.label 'Повторяющаяся' %>
+    <%= form.select_recurring :recurring, nil, allow_blank: true %>
+  </div> -->
 
   <div class="actions">
     <%= form.submit 'Создать предмет', class:"btn btn-primary"  %>

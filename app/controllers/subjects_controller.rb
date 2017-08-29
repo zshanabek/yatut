@@ -5,6 +5,7 @@ class SubjectsController < ApplicationController
   # GET /subjects.json
   def index
     @subjects = Subject.all
+    # @calendar_subjects = @subjects.flat_map{ |s| s.calendar_subjects(params.fetch(:start_date, Time.zone.now).to_date)}
     respond_to do |format|
       format.html { render :index }
       format.json { render json: @subjects, status: :ok}
@@ -73,6 +74,7 @@ class SubjectsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def subject_params
-      params.require(:subject).permit(:name, :longitude, :latitude, :radius)
+      params.require(:subject).permit(:name, :longitude, :latitude, :radius, 
+      :start_time, :recurring, :starts_at, :ends_at)
     end
 end

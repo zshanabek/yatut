@@ -1,6 +1,13 @@
-<!-- <p id="notice"><%= notice %></p> -->
-
 <h1>Предметы</h1>
+
+<!-- <%= month_calendar subjects: @calendar_subjects do |day, subjects| %>
+  <div><strong><%= day.to_s(:long) %></strong></div>
+  <% subjects.each do |subject| %>
+    <div>
+      <%= link_to subject.name, subject_path(subject.id) %>
+    </div>
+  <% end %>
+<% end %> -->
 
 <table style="width: auto;" class="table table-hover table-bordered">
   <thead>

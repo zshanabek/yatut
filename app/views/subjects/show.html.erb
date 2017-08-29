@@ -19,6 +19,24 @@
   <strong>Адрес:</strong>
   <%= @subject.address %>
 </p>
+<!-- <p>
+  <strong>Дата начала:</strong>
+  <%= @subject.start_time %>
+</p> -->
+
+<p>
+  <strong>Начинается в:</strong>
+  <%= @subject.starts_at %>
+</p>
+
+<p>
+  <strong>Заканичается в:</strong>
+  <%= @subject.ends_at %>
+</p>
+<!-- <p>
+  <strong>Повторение:</strong>
+  <%= @subject.recurring %>
+</p> -->
 <%= link_to 'Список посещаемости', subject_attendances_path(@subject), class:"btn btn-default" %> <br/>
 <%= link_to 'Удалить', @subject, method: :delete, data: { confirm: 'Are you sure?' }  %> |
 <%= link_to 'Редактировать', edit_subject_path(@subject) %> |

@@ -5,26 +5,23 @@
 	<div class="container">
 		
 		<div class="nav-header">
-			<a class="navbar-brand" href="#"><img src="images/logo1.png" alt="Brand logo" class=""></a>
+			<a class="navbar-brand" href="#"><img src="" alt="Yatut" class=""></a>
 			<a class="nav-handle fs-touch-element" data-nav=".nav"><i class="fa fa-bars"></i></a>	
 		</div>
 		
 		<div class="nav vm-item">
 			<ul class="nav-links">
-				<li class=""><a href="#aboutus" class="">About us</a></li>
-				<li class=""><a href="#feature" class="">Feature</a></li>
-				<li class=""><a href="#price" class="">Pricing</a></li>
-				<li class=""><a href="#download" class="">Download</a></li>
-				<li class=""><a href="#contact" class="">Contact us</a></li>
+				<li class=""><a href="#feature" class="">Особенности</a></li>
+				<li class=""><a href="#download" class="">Получить</a></li>
 			</ul>
 			<div class="nav-other">          
-                <% if user_signed_in? %>
-                    <%= link_to "Мой аккаунт", subjects_path,  class:"btn btn-primary btn-sm" %>
-                <% else %>
-                    <%= link_to "Зарегистрироваться", new_user_registration_path,  class:"btn btn-primary btn-sm" %>
-                    <%= link_to "Войти", new_user_session_path, class:"btn btn-primary btn-sm" %>
-                <% end %>
-            </div>
+				<% if user_signed_in? %>
+						<%= link_to "Мой аккаунт", subjects_path,  class:"btn btn-primary btn-sm" %>
+				<% else %>
+						<%= link_to "Зарегистрироваться", new_user_registration_path,  class:"btn btn-primary btn-sm" %>
+						<%= link_to "Войти", new_user_session_path, class:"btn btn-primary btn-sm" %>
+				<% end %>
+    	</div>
 		</div><!-- /.nav --> 
 		
 	</div><!-- /.container --> 

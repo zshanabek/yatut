@@ -6,6 +6,7 @@ git_source(:github) do |repo_name|
 end
 
 gem 'devise'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.3'
 # Use postgresql as the database for Active Record
@@ -55,3 +56,6 @@ group :development do
 end
 
 ruby '2.4.0'
+
+gem 'recurring_select', github: 'RundownApp/recurring_select'
+gem 'simple_calendar'
