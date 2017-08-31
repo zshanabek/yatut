@@ -1,6 +1,7 @@
-<!-- <p id="notice"><%= notice %></p> -->
+<script src="//maps.google.com/maps/api/js?key=AIzaSyBj_0GBAd1mmKjDg9M2wHE4YoFF9J2-1hA"></script>
+<script src="//cdn.rawgit.com/mahnunchik/markerclustererplus/master/dist/markerclusterer.min.js"></script>
 <h1>
-    <%= @subject.name %>    
+    <%= @subject.name %>
 </h1>
 
 <p>
@@ -19,10 +20,6 @@
   <strong>Адрес:</strong>
   <%= @subject.address %>
 </p>
-<!-- <p>
-  <strong>Дата начала:</strong>
-  <%= @subject.start_time %>
-</p> -->
 
 <p>
   <strong>Начинается в:</strong>
@@ -33,11 +30,23 @@
   <strong>Заканичается в:</strong>
   <%= @subject.ends_at %>
 </p>
-<!-- <p>
-  <strong>Повторение:</strong>
-  <%= @subject.recurring %>
-</p> -->
+
 <%= link_to 'Список посещаемости', subject_attendances_path(@subject), class:"btn btn-default" %> <br/>
 <%= link_to 'Удалить', @subject, method: :delete, data: { confirm: 'Are you sure?' }  %> |
 <%= link_to 'Редактировать', edit_subject_path(@subject) %> |
 <%= link_to 'Назад', subjects_path %>
+
+
+<div style='width: 800px;'>
+  <div id="map" style='width: 800px; height: 400px;'></div>
+</div>
+
+
+<script type="text/javascript">
+  handler = Gmaps.build('Google');
+  handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+    markers = handler.addMarkers(<%=raw @hash.to_json %>);
+    handler.bounds.extendWith(markers);
+    handler.fitMapToBounds();
+});
+</script>

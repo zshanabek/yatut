@@ -1,3 +1,6 @@
+
+<script src="//maps.google.com/maps/api/js?key=AIzaSyBj_0GBAd1mmKjDg9M2wHE4YoFF9J2-1hA"></script>
+<script src="//cdn.rawgit.com/mahnunchik/markerclustererplus/master/dist/markerclusterer.min.js"></script>
 <h1>Предметы</h1>
 
 <!-- <%= month_calendar subjects: @calendar_subjects do |day, subjects| %>
@@ -31,3 +34,17 @@
 <br>
 
 <%= link_to 'Новый предмет', new_subject_path %>
+
+<div style='width: 800px;'>
+  <div id="map" style='width: 800px; height: 400px;'></div>
+</div>
+
+
+<script type="text/javascript">
+  handler = Gmaps.build('Google');
+  handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+    markers = handler.addMarkers(<%=raw @hash.to_json %>);
+    handler.bounds.extendWith(markers);
+    handler.fitMapToBounds();
+  });
+</script>

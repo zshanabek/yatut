@@ -15,5 +15,7 @@
 //= require turbolinks
 //= require recurring_select 
 //= require bootstrap-sprockets
+//= require underscore
+//= require gmaps/google
 //= require_tree .
 

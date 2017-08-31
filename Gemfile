@@ -56,6 +56,6 @@ group :development do
 end
 
 ruby '2.4.0'
-
+gem 'gmaps4rails'
 gem 'recurring_select', github: 'RundownApp/recurring_select'
 gem 'simple_calendar'
