@@ -14,7 +14,7 @@
 </p>
 <p>
   <strong>Радиус:</strong>
-  <%= @subject.radius %>
+  <%= @subject.radius %> м
 </p>
 <p>
   <strong>Адрес:</strong>
@@ -43,8 +43,14 @@
 
 
 <script type="text/javascript">
+  
   handler = Gmaps.build('Google');
   handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+    var circles = handler.addCircles(
+      [{ lat: <%= @subject.latitude %>, lng:  <%= @subject.longitude %>, radius: <%= @subject.radius %>}],
+      { strokeColor: '#FF0000'}
+    );
+  
     markers = handler.addMarkers(<%=raw @hash.to_json %>);
     handler.bounds.extendWith(markers);
     handler.fitMapToBounds();

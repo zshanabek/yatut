@@ -24,7 +24,6 @@
     <% @subjects.each do |subject| %>
       <tr>
         <td><%= subject.name %></td>
-        <!-- <td><%= link_to 'Attendance', subject_attendances_path(subject) %></td>         -->
         <td><%= link_to 'Показать', subject %></td>
       </tr>
     <% end %>
@@ -34,17 +33,3 @@
 <br>
 
 <%= link_to 'Новый предмет', new_subject_path %>
-
-<div style='width: 800px;'>
-  <div id="map" style='width: 800px; height: 400px;'></div>
-</div>
-
-
-<script type="text/javascript">
-  handler = Gmaps.build('Google');
-  handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
-    markers = handler.addMarkers(<%=raw @hash.to_json %>);
-    handler.bounds.extendWith(markers);
-    handler.fitMapToBounds();
-  });
-</script>

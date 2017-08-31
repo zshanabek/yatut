@@ -9,6 +9,7 @@ class SubjectsController < ApplicationController
     @hash = Gmaps4rails.build_markers(@subjects) do |subject, marker|
       marker.lat subject.latitude
       marker.lng subject.longitude
+      marker.infowindow subject.name
     end
     respond_to do |format|
       format.html { render :index }
@@ -22,6 +23,7 @@ class SubjectsController < ApplicationController
     @hash = Gmaps4rails.build_markers(@subject) do |subject, marker|
       marker.lat subject.latitude
       marker.lng subject.longitude
+      marker.infowindow subject.name
     end
   end
 
