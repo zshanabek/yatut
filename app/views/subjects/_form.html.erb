@@ -1,7 +1,8 @@
-<script src="//maps.google.com/maps/api/js?key=AIzaSyBj_0GBAd1mmKjDg9M2wHE4YoFF9J2-1hA"></script>
-<script src="//cdn.rawgit.com/mahnunchik/markerclustererplus/master/dist/markerclusterer.min.js"></script>
 <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
 <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script src="//maps.google.com/maps/api/js?key=AIzaSyBj_0GBAd1mmKjDg9M2wHE4YoFF9J2-1hA"></script>
+<script src="//cdn.rawgit.com/mahnunchik/markerclustererplus/master/dist/markerclusterer.min.js"></script>
+
 <div class="col-md-4">
   <%= form_with(model: subject, local: true) do |form| %>
   <% if subject.errors.any? %>
@@ -37,55 +38,29 @@
    </div> -->
 
   <div style='width: 800px;'>
-    <div id="map" style='width: 800px; height: 400px; margin: 20px 0 20px 0;'></div>
+    <div id="geolocation" style='width: 348px; height: 348px;'></div>
   </div>
 
 
   <div class="actions">
-    <%= form.submit 'Создать предмет', class:"btn btn-primary form-control", id:"submit_button"  %>
+    <%= form.submit 'Создать предмет', style:"margin: 20px 0 20px 0;", class:"btn btn-primary form-control", id:"submit_button"  %>
   </div>
 
 <% end %>
 </div>
 
-<script type="text/javascript">
-  var lat;
-  var lng;
-  handler = Gmaps.build('Google');
-  handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
-    var myLatlng = {lat: 43.238255, lng: 76.946682};
-    
-    var map = new google.maps.Map(document.getElementById('map'), {
-      zoom: 10,
-      center: myLatlng
-    });
-    map.addListener('click', function(e) {
-      placeMarkerAndPanTo(e.latLng, map);
-    });
-
-    function placeMarkerAndPanTo(latLng, map) {
-      var marker = new google.maps.Marker({
-        position: latLng,
-        map: map
-      }); 
-      map.panTo(latLng);
-      lat = latLng.lat()
-      lng = latLng.lng()      
-    }
-    $("#submit_button").submit(function(event) {      
-         event.preventDefault();        
-          $.ajax({
-            url: "/SubjectCreate/?latitude="+lat+"&longitude="+lng,
-            type: "post",
-            data: values,
-            success: function(){
-              alert('Saved Successfully');
-            },
-            error:function(){
-             alert('Error');
-            }
-          });
-      });
+<script>
+  var handler = Gmaps.build('Google');
+  handler.buildMap({ internal: {id: 'geolocation'} }, function(){
+    if(navigator.geolocation)
+      navigator.geolocation.getCurrentPosition(displayOnMap);
   });
-
-  </script>
+  
+  function displayOnMap(position){
+    var marker = handler.addMarker({
+      lat: position.coords.latitude,
+      lng: position.coords.longitude
+    });
+    handler.map.centerOn(marker);
+  };
+</script>
