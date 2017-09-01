@@ -39,8 +39,9 @@ class SubjectsController < ApplicationController
   # POST /subjects
   # POST /subjects.json
   def create
+    latitude = params[:latitude]
+    longitude = params[:longitude]    
     @subject = Subject.new(subject_params)
-    # byebug
     respond_to do |format|
       if @subject.save!
         format.html { redirect_to @subject, notice: 'Subject was successfully created.' }

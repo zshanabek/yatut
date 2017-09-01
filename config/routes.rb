@@ -10,5 +10,5 @@ Rails.application.routes.draw do
   end
 
   root controller: 'welcome', action: :index  
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  post '/SubjectCreate', to: 'subject#create'
 end

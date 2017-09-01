@@ -1,11 +1,13 @@
 class AttendancesController < ApplicationController
   before_action :set_attendance, only: [:show]  
+  before_action :authenticate_user!, except: [:create]
   def create
     @attendance = current_subject.attendances.build(attendance_params)
     @attendance.subject_id = current_subject.id
     point1 = [@attendance.latitude, @attendance.longitude]
     point2 = [current_subject.latitude, current_subject.longitude]
-    in_circle = Geocoder::Calculations.distance_between(point1, point2) < current_subject.radius
+    radius_in_m = current_subject.radius / 1000
+    in_circle = Geocoder::Calculations.distance_between(point1, point2) < radius_in_m
     if in_circle == true
       if @attendance.save!
         render json: @attendance, status: :created   

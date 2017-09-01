@@ -1,6 +1,9 @@
 <script src="//maps.google.com/maps/api/js?key=AIzaSyBj_0GBAd1mmKjDg9M2wHE4YoFF9J2-1hA"></script>
 <script src="//cdn.rawgit.com/mahnunchik/markerclustererplus/master/dist/markerclusterer.min.js"></script>
-<%= form_with(model: subject, local: true) do |form| %>
+<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<div class="col-md-4">
+  <%= form_with(model: subject, local: true) do |form| %>
   <% if subject.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(subject.errors.count, "error") %> prohibited this subject from being saved:</h2>
@@ -18,54 +21,36 @@
     <%= form.text_field :name, class: "form-control"%>
   </div>
 
-  <div class="field">
-    <%= form.label 'Широта' %>
-    <%= form.number_field :latitude , step: :any, class: "form-control"%>
-  </div>
-
-  <div class="field">
-    <%= form.label 'Долгота' %>
-    <%= form.number_field :longitude, step: :any, class: "form-control" %>
-  </div>
   
   <div class="field">
     <%= form.label 'Радиус' %>
     <%= form.number_field :radius, class: "form-control" %>
   </div>
   
-  <div class="field">
+  <!-- <div class="field">
     <%= form.label 'Начинается в' %>
     <%= form.time_select :starts_at, :value => subject.starts_at, :default => Time.now %>
   </div>
   <div class="field">
     <%= form.label 'Заканчивается в' %>
     <%= form.time_select :ends_at, :value => subject.ends_at, :default => Time.now %>
-   </div>
-        
-  <div class="field">
-    <%= form.label 'Дата начала' %>
-    <%= form.datetime_select :start_time, class: "form-control" %>
-  </div>
-
-  <!-- <div class="field">
-    <%= form.label 'Повторяющаяся' %>
-    <%= form.select_recurring :recurring, nil, allow_blank: true %>
-  </div> -->
+   </div> -->
 
   <div style='width: 800px;'>
-    <div id="map" style='width: 800px; height: 400px;'></div>
+    <div id="map" style='width: 800px; height: 400px; margin: 20px 0 20px 0;'></div>
   </div>
-  
-  
+
 
   <div class="actions">
-    <%= form.submit 'Создать предмет', class:"btn btn-primary"  %>
+    <%= form.submit 'Создать предмет', class:"btn btn-primary form-control", id:"submit_button"  %>
   </div>
 
 <% end %>
-
+</div>
 
 <script type="text/javascript">
+  var lat;
+  var lng;
   handler = Gmaps.build('Google');
   handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
     var myLatlng = {lat: 43.238255, lng: 76.946682};
@@ -84,6 +69,23 @@
         map: map
       }); 
       map.panTo(latLng);
+      lat = latLng.lat()
+      lng = latLng.lng()      
     }
+    $("#submit_button").submit(function(event) {      
+         event.preventDefault();        
+          $.ajax({
+            url: "/SubjectCreate/?latitude="+lat+"&longitude="+lng,
+            type: "post",
+            data: values,
+            success: function(){
+              alert('Saved Successfully');
+            },
+            error:function(){
+             alert('Error');
+            }
+          });
+      });
   });
-</script>
+
+  </script>
