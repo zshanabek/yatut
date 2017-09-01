@@ -19,15 +19,15 @@
   </div>
 
   <div class="field">
-    <%= form.label 'Долгота' %>
-    <%= form.number_field :longitude, step: :any, class: "form-control" %>
-  </div>
-
-  <div class="field">
     <%= form.label 'Широта' %>
     <%= form.number_field :latitude , step: :any, class: "form-control"%>
   </div>
 
+  <div class="field">
+    <%= form.label 'Долгота' %>
+    <%= form.number_field :longitude, step: :any, class: "form-control" %>
+  </div>
+  
   <div class="field">
     <%= form.label 'Радиус' %>
     <%= form.number_field :radius, class: "form-control" %>
