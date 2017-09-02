@@ -1,5 +1,3 @@
-<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
-<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 <script src="//maps.google.com/maps/api/js?key=AIzaSyBj_0GBAd1mmKjDg9M2wHE4YoFF9J2-1hA"></script>
 <script src="//cdn.rawgit.com/mahnunchik/markerclustererplus/master/dist/markerclusterer.min.js"></script>
 
@@ -22,22 +20,21 @@
     <%= form.text_field :name, class: "form-control"%>
   </div>
 
-  
+  <div class="field">
+    <%= form.hidden_field :latitude, id: "latitude" %>
+  </div>
+
+  <div class="field">
+    <%= form.hidden_field :longitude, id: "longitude" %>
+  </div>
+
   <div class="field">
     <%= form.label 'Радиус' %>
     <%= form.number_field :radius, class: "form-control" %>
   </div>
-  
-  <!-- <div class="field">
-    <%= form.label 'Начинается в' %>
-    <%= form.time_select :starts_at, :value => subject.starts_at, :default => Time.now %>
-  </div>
-  <div class="field">
-    <%= form.label 'Заканчивается в' %>
-    <%= form.time_select :ends_at, :value => subject.ends_at, :default => Time.now %>
-   </div> -->
 
-  <div style='width: 800px;'>
+
+  <div style='width: 348;'>
     <div id="geolocation" style='width: 348px; height: 348px;'></div>
   </div>
 
@@ -50,17 +47,23 @@
 </div>
 
 <script>
-  var handler = Gmaps.build('Google');
+ window.onload = function() {
+    var handler = Gmaps.build('Google');
   handler.buildMap({ internal: {id: 'geolocation'} }, function(){
     if(navigator.geolocation)
       navigator.geolocation.getCurrentPosition(displayOnMap);
   });
-  
+  var latitude;
+  var longitude;
   function displayOnMap(position){
     var marker = handler.addMarker({
       lat: position.coords.latitude,
       lng: position.coords.longitude
     });
     handler.map.centerOn(marker);
+      // document.getElementById('longitude').value = position.coords.longitude
+      // document.getElementById('latitude').value = position.coords.latitude
   };
+  };
+
 </script>
