@@ -39,8 +39,6 @@ class SubjectsController < ApplicationController
   # POST /subjects
   # POST /subjects.json
   def create
-    latitude = params[:latitude]
-    longitude = params[:longitude]    
     @subject = Subject.new(subject_params)
     respond_to do |format|
       if @subject.save!
@@ -85,7 +83,6 @@ class SubjectsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def subject_params
-      params.require(:subject).permit(:name, :longitude, :latitude, :radius,
-      :start_time, :recurring, :starts_at, :ends_at)
+      params.require(:subject).permit(:name, :longitude, :latitude, :radius,  :starts_at, :ends_at)
     end
 end

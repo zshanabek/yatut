@@ -22,12 +22,21 @@
 
 
   <div class="field">
+    <%= form.hidden_field :latitude, id: "latitude" %>
+  </div>
+
+
+  <div class="field">
+    <%= form.hidden_field :longitude, id: "longitude" %>
+  </div>
+
+  <div class="field">
     <%= form.label 'Радиус' %>
     <%= form.number_field :radius, class: "form-control" %>
   </div>
 
 
-  <div style='width: 800px; margin-top: 20px;'>
+  <div style='width: 348; margin-top: 20px;'>
     <div id="geolocation" style='width: 348px; height: 348px;'></div>
   </div>
 
@@ -39,18 +48,25 @@
 <% end %>
 </div>
 
-<script type="text/javascript">
-  var handler = Gmaps.build('Google');
+<script>
+ window.onload = function() {
+    var handler = Gmaps.build('Google');
   handler.buildMap({ internal: {id: 'geolocation'} }, function(){
     if(navigator.geolocation)
       navigator.geolocation.getCurrentPosition(displayOnMap);
   });
-
+  var latitude;
+  var longitude;
   function displayOnMap(position){
     var marker = handler.addMarker({
       lat: position.coords.latitude,
       lng: position.coords.longitude
     });
     handler.map.centerOn(marker);
+      document.getElementById('longitude').value = position.coords.longitude
+      document.getElementById('latitude').value = position.coords.latitude
   };
+  };
+
 </script>
+
