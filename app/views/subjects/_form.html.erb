@@ -1,9 +1,7 @@
-<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
-<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 <script src="//maps.google.com/maps/api/js?key=AIzaSyBj_0GBAd1mmKjDg9M2wHE4YoFF9J2-1hA"></script>
 <script src="//cdn.rawgit.com/mahnunchik/markerclustererplus/master/dist/markerclusterer.min.js"></script>
 
-<div class="col-md-4">
+
   <%= form_with(model: subject, local: true) do |form| %>
   <% if subject.errors.any? %>
     <div id="error_explanation">
@@ -16,28 +14,20 @@
       </ul>
     </div>
   <% end %>
-
+  <div class="col-md-4">
   <div class="field">
     <%= form.label 'Название' %>
     <%= form.text_field :name, class: "form-control"%>
   </div>
 
-  
+
   <div class="field">
     <%= form.label 'Радиус' %>
     <%= form.number_field :radius, class: "form-control" %>
   </div>
-  
-  <!-- <div class="field">
-    <%= form.label 'Начинается в' %>
-    <%= form.time_select :starts_at, :value => subject.starts_at, :default => Time.now %>
-  </div>
-  <div class="field">
-    <%= form.label 'Заканчивается в' %>
-    <%= form.time_select :ends_at, :value => subject.ends_at, :default => Time.now %>
-   </div> -->
 
-  <div style='width: 800px;'>
+
+  <div style='width: 800px; margin-top: 20px;'>
     <div id="geolocation" style='width: 348px; height: 348px;'></div>
   </div>
 
@@ -49,13 +39,13 @@
 <% end %>
 </div>
 
-<script>
+<script type="text/javascript">
   var handler = Gmaps.build('Google');
   handler.buildMap({ internal: {id: 'geolocation'} }, function(){
     if(navigator.geolocation)
       navigator.geolocation.getCurrentPosition(displayOnMap);
   });
-  
+
   function displayOnMap(position){
     var marker = handler.addMarker({
       lat: position.coords.latitude,
