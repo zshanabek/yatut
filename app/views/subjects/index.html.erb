@@ -1,20 +1,25 @@
 <h1>Предметы</h1>
-
+<div class="row">
+<div class="col-md-2">
 <table style="width: auto;" class="table table-hover table-bordered">
   <thead>
     <tr>
-      <th>Название</th>
+      <th>Предметы</th>
     </tr>
   </thead>
 
   <tbody>
     <% @subjects.each do |subject| %>
       <tr>
-        <td><%= subject.name %></td>
-        <td><%= link_to 'Показать', subject %></td>
+        <td><%= link_to subject.name, subject %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
+</div>
+<div class="col-md-4">
 <%= link_to 'Новый предмет', new_subject_path %>
+</div>
+</div>
+
+
