@@ -6,8 +6,9 @@ class AttendancesController < ApplicationController
     @attendance.subject_id = current_subject.id
     point1 = [@attendance.latitude, @attendance.longitude]
     point2 = [current_subject.latitude, current_subject.longitude]
-    radius_in_m = current_subject.radius
-    in_circle = Geocoder::Calculations.distance_between(point1, point2) < radius_in_m
+    radius = current_subject.radius
+    distance = Geocoder::Calculations.distance_between(point1, point2) * 1000
+    in_circle = distance < radius
     if in_circle == true
       if @attendance.save!
         render json: @attendance, status: :created
