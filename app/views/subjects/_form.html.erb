@@ -1,56 +1,53 @@
-<script src="//maps.google.com/maps/api/js?key=AIzaSyBj_0GBAd1mmKjDg9M2wHE4YoFF9J2-1hA"></script>
-<script src="//cdn.rawgit.com/mahnunchik/markerclustererplus/master/dist/markerclusterer.min.js"></script>
+<%= form_with(model: subject, local: true) do |form| %>
+<% if subject.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(subject.errors.count, "error") %> prohibited this subject from being saved:</h2>
 
-
-  <%= form_with(model: subject, local: true) do |form| %>
-  <% if subject.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(subject.errors.count, "error") %> prohibited this subject from being saved:</h2>
-
-      <ul>
-      <% subject.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-  <div class="col-md-4">
-  <div class="field">
-    <%= form.label 'Название' %>
-    <%= form.text_field :name, class: "form-control"%>
+    <ul>
+    <% subject.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
   </div>
+<% end %>
+<div class="col-md-4">
+<div class="field">
+  <%= form.label 'Название' %>
+  <%= form.text_field :name, class: "form-control"%>
+</div>
 
 
-  <div class="field">
-    <%= form.hidden_field :latitude, id: "latitude" %>
-  </div>
+<div class="field">
+  <%= form.hidden_field :latitude, id: "latitude" %>
+</div>
 
 
-  <div class="field">
-    <%= form.hidden_field :longitude, id: "longitude" %>
-  </div>
+<div class="field">
+  <%= form.hidden_field :longitude, id: "longitude" %>
+</div>
 
-  <div class="field">
-    <%= form.label 'Радиус' %>
-    <%= form.number_field :radius, class: "form-control" %>
-  </div>
-
-
-  <div style='width: 348; margin-top: 20px;'>
-    <div id="geolocation" style='width: 348px; height: 348px;'></div>
-  </div>
+<div class="field">
+  <%= form.label 'Радиус' %>
+  <%= form.number_field :radius, class: "form-control" %>
+</div>
 
 
-  <div class="actions">
-    <%= form.submit 'Создать предмет', style:"margin: 20px 0 20px 0;", class:"btn btn-primary form-control", id:"submit_button"  %>
-  </div>
+<div style='width: 348; margin-top: 20px;'>
+  <div id="geolocation" style='width: 348px; height: 348px;'></div>
+</div>
+
+
+<div class="actions">
+  <%= form.submit 'Создать предмет', style:"margin: 20px 0 20px 0;", class:"btn btn-primary form-control", id:"submit_button"  %>
+</div>
 
 <% end %>
 </div>
 
-<script>
- window.onload = function() {
-    var handler = Gmaps.build('Google');
+<script type="text/javascript">
+function initMap()
+    {
+  var handler = Gmaps.build('Google');
   handler.buildMap({ internal: {id: 'geolocation'} }, function(){
     if(navigator.geolocation)
       navigator.geolocation.getCurrentPosition(displayOnMap);
@@ -69,4 +66,8 @@
   };
 
 </script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBj_0GBAd1mmKjDg9M2wHE4YoFF9J2-1hA&callback=initMap" async defer>
+
+</script>
+<script src="//cdn.rawgit.com/mahnunchik/markerclustererplus/master/dist/markerclusterer.min.js"></script>
 
