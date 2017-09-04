@@ -1,6 +1,8 @@
 <h1>
     <%= @subject.name %>
 </h1>
+<div class="row">
+<div class="col-md-4">
 <p>
   <strong>Широта:</strong>
   <%= @subject.latitude %>
@@ -34,8 +36,14 @@
 <div style='width: 348px;'>
   <div id="map" style='width: 348px; height: 348px;'></div>
 </div>
+</div>
+<div class="col-md-3">
+<%= link_to 'Список посещаемости', subject_attendances_path(@subject), class:"btn btn-primary" %> <br/>
+</div>
+</div>
 
-<%= link_to 'Список посещаемости', subject_attendances_path(@subject),  style:"margin: 20px 0 20px 0;", class:"btn btn-default" %> <br/>
+
+
 <%= link_to 'Удалить', @subject, method: :delete, data: { confirm: 'Are you sure?' }  %> |
 <%= link_to 'Редактировать', edit_subject_path(@subject) %> |
 <%= link_to 'Назад', subjects_path %>
