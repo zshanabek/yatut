@@ -5,6 +5,7 @@
     <tr>
       <th>Имя</th>
       <th>Фамилия</th>
+      <th>Время</th>
     </tr>
   </thead>
 
@@ -12,7 +13,8 @@
     <% @attendances.each do |attendance| %>
       <tr>
         <td><%= attendance.first_name %></td>
-        <td><%= attendance.last_name %></td>        
+        <td><%= attendance.last_name %></td>
+        <td><%= attendance.created_at %></td>
       </tr>
     <% end %>
   </tbody>

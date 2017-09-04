@@ -44,6 +44,6 @@ class AttendancesController < ApplicationController
     end
 
     def attendance_params
-      params.require(:attendance).permit(:first_name, :last_name,:longitude, :latitude, :subject_id)
+      params.require(:attendance).permit(:first_name, :last_name,:longitude, :latitude, :subject_id, :created_at)
     end
 end
