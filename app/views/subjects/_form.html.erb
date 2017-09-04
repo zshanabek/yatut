@@ -13,27 +13,27 @@
 <div class="col-md-4">
 <div class="field">
   <%= form.label 'Название' %>
-  <%= form.text_field :name, class: "form-control"%>
+  <%= form.text_field :name, class: "form-control", required: true%>
 </div>
 
 
 <div class="field">
-  <%= form.hidden_field :latitude, id: "latitude" %>
+  <%= form.hidden_field :latitude, id: "latitude", required: true %>
 </div>
 
 
 <div class="field">
-  <%= form.hidden_field :longitude, id: "longitude" %>
+  <%= form.hidden_field :longitude, id: "longitude", required: true %>
 </div>
 
 <div class="field">
   <%= form.label 'Радиус' %>
-  <%= form.number_field :radius, class: "form-control" %>
+  <%= form.number_field :radius, class: "form-control", id:"radius", required: true %>
 </div>
 
 
 <div style='width: 348; margin-top: 20px;'>
-  <div id="geolocation" style='width: 348px; height: 348px;'></div>
+  <div id="map" style='width: 348px; height: 348px;'></div>
 </div>
 
 
@@ -44,30 +44,71 @@
 <% end %>
 </div>
 
-<script type="text/javascript">
-function initMap()
-    {
-  var handler = Gmaps.build('Google');
-  handler.buildMap({ internal: {id: 'geolocation'} }, function(){
-    if(navigator.geolocation)
-      navigator.geolocation.getCurrentPosition(displayOnMap);
-  });
-  var latitude;
-  var longitude;
-  function displayOnMap(position){
-    var marker = handler.addMarker({
-      lat: position.coords.latitude,
-      lng: position.coords.longitude
-    });
-    handler.map.centerOn(marker);
-      document.getElementById('longitude').value = position.coords.longitude
-      document.getElementById('latitude').value = position.coords.latitude
-  };
-  };
+<script>
 
+function initMap() {
+  var marker;
+  var map = new google.maps.Map(document.getElementById('map'), {
+    center: {lat: -34.397, lng: 150.644},
+    zoom: 6
+  });
+  var infoWindow = new google.maps.InfoWindow({map: map});
+
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      var pos = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+      };
+
+      infoWindow.setPosition(pos);
+      infoWindow.setContent('Найдено ваше местоположение. Выберите центр аудитории');
+      map.setCenter(pos);
+      map.setZoom(15);
+    }, function() {
+      handleLocationError(true, infoWindow, map.getCenter());
+    });
+  } else {
+    // Browser doesn't support Geolocation
+    handleLocationError(false, infoWindow, map.getCenter());
+  }
+
+
+  function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+  infoWindow.setPosition(pos);
+  infoWindow.setContent(browserHasGeolocation ?
+                        'Error: The Geolocation service failed.' :
+                        'Error: Your browser doesn\'t support geolocation.');
+  }
+  map.addListener('click', function(e){
+    placeMarkerAndPanTo(e.latLng, map);
+  });
+  function placeMarkerAndPanTo(latLng, map){
+    if ( marker ) {
+      marker.setPosition(latLng);
+      map.panTo(latLng);
+    }
+    else{
+      marker = new google.maps.Marker({
+        position: latLng,
+        map: map
+      });
+      map.panTo(latLng);
+    }
+    bindWithFields(latLng);
+  }
+  function bindWithFields(latLng){
+    document.getElementById('longitude').value = latLng.lng()
+    document.getElementById('latitude').value = latLng.lat()
+  }
+  document.getElementById("radius").addEventListener('change', doThing);
+  /* function */
+  function doThing(){
+      // this.value
+  }
+}
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBj_0GBAd1mmKjDg9M2wHE4YoFF9J2-1hA&callback=initMap" async defer>
-
 </script>
 <script src="//cdn.rawgit.com/mahnunchik/markerclustererplus/master/dist/markerclusterer.min.js"></script>
 
