@@ -21,7 +21,7 @@ class AttendancesController < ApplicationController
   end
 
   def index
-    @attendances = current_subject.attendances.all
+    @attendances = current_subject.attendances.order('created_at DESC')
     respond_to do |format|
       format.html { render :index }
       format.json { render json: @attendances, status: :ok}
