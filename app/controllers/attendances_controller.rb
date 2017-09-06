@@ -9,11 +9,22 @@ class AttendancesController < ApplicationController
     radius = current_subject.radius
     distance = Geocoder::Calculations.distance_between(point1, point2) * 1000
     in_circle = distance < radius
-    if in_circle == true
-      if @attendance.save!
-        render json: @attendance, status: :created
+    start_seconds = current_subject.start_time.seconds_since_midnight
+    end_seconds = current_subject.end_time.seconds_since_midnight
+    range = start_seconds..end_seconds
+    t = attendance_params["created_at"]
+    new_time = Time.parse(t)
+    client_seconds = new_time.seconds_since_midnight
+    in_progress = range === client_seconds
+    if in_circle
+      if in_progress
+        if @attendance.save!
+          render json: @attendance, status: :created
+        else
+          head(:unprocessable_entity)
+        end
       else
-        head(:unprocessable_entity)
+        render json: {faile: 'Время проверки пока не началось или уже прошло'}, status: :forbidden
       end
     else
       render json: {faile: 'Не надо так. Вы не в радиусе класса'}, status: :forbidden

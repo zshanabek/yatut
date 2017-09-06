@@ -23,15 +23,20 @@
   <%= @subject.address %>
 </p>
 
-<!-- <p>
+<p>
+  <strong>Дата:</strong>
+  <%= @subject.date %>
+</p>
+
+<p>
   <strong>Начинается в:</strong>
-  <%= @subject.starts_at %>
+  <%= @subject.start_time.strftime("%H:%M")%>
 </p>
 
 <p>
   <strong>Заканичается в:</strong>
-  <%= @subject.ends_at %>
-</p> -->
+  <%= @subject.end_time.strftime("%H:%M") %>
+</p>
 
 <div style='width: 348px;'>
   <div id="map" style='width: 348px; height: 348px;'></div>

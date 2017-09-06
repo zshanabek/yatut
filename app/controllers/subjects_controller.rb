@@ -5,7 +5,6 @@ class SubjectsController < ApplicationController
   # GET /subjects.json
   def index
     @subjects = Subject.all
-    # @calendar_subjects = @subjects.flat_map{ |s| s.calendar_subjects(params.fetch(:start_date, Time.zone.now).to_date)}
     @hash = Gmaps4rails.build_markers(@subjects) do |subject, marker|
       marker.lat subject.latitude
       marker.lng subject.longitude
@@ -39,7 +38,11 @@ class SubjectsController < ApplicationController
   # POST /subjects
   # POST /subjects.json
   def create
+    params[:subject].parse_time_select! :start_time
+    params[:subject].parse_time_select! :end_time
+    # params[:subject].parse_time_select! :date
     @subject = Subject.new(subject_params)
+
     respond_to do |format|
       if @subject.save!
         format.html { redirect_to @subject, notice: 'Subject was successfully created.' }
@@ -54,6 +57,8 @@ class SubjectsController < ApplicationController
   # PATCH/PUT /subjects/1
   # PATCH/PUT /subjects/1.json
   def update
+    params[:subject].parse_time_select! :start_time
+    params[:subject].parse_time_select! :end_time
     respond_to do |format|
       if @subject.update(subject_params)
         format.html { redirect_to @subject, notice: 'Subject was successfully updated.' }
@@ -83,6 +88,6 @@ class SubjectsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def subject_params
-      params.require(:subject).permit(:name, :longitude, :latitude, :radius,  :starts_at, :ends_at)
+      params.require(:subject).permit(:name, :longitude, :latitude, :radius,  :start_time, :end_time, :date)
     end
 end

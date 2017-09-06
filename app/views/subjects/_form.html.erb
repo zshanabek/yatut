@@ -15,6 +15,43 @@
   <%= form.label 'Название' %>
   <%= form.text_field :name, class: "form-control", required: true%>
 </div>
+
+<div class="field">
+  <%= form.label 'Дата' %>
+  <%= form.date_select :date, class: "form-control", required: true%>
+</div>
+
+<div class="field">
+  <%= form.label 'Начинается в' %>
+  <%= form.time_select :start_time,
+    :combined => true,
+    :default => Time.now.change(:hour => 11, :min => 30),
+    :minute_interval => 10,
+    :time_separator => "",
+    :start_hour => 6,
+    :start_minute => 30,
+    :end_hour => 20,
+    :end_minute => 30,
+    class: "form-control",
+    required: true %>
+</div>
+
+<div class="field">
+  <%= form.label 'Заканчивается в' %>
+  <%= form.time_select :end_time,
+    :combined => true,
+    :default => Time.now.change(:hour => 11, :min => 30),
+    :minute_interval => 10,
+    :time_separator => "",
+    :start_hour => 6,
+    :start_minute => 30,
+    :end_hour => 20,
+    :end_minute => 30,
+    class: "form-control",
+    required: true %>
+</div>
+
+
 <div class="field">
   <%= form.hidden_field :latitude, id: "latitude", required: true %>
 </div>
@@ -89,8 +126,7 @@ function initMap() {
     else{
       marker = new google.maps.Marker({
         position: latLng,
-        map: map,
-        draggable:true
+        map: map
       });
     }
     bindWithFields(latLng);
