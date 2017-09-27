@@ -17,8 +17,8 @@
     <ul class="nav">
       <% if user_signed_in? %>
       <li class="nav-item"><%= link_to 'Предметы', subjects_path, class:"nav-link" %></li>
-      <li class="nav-item"><%= link_to('Выйти', destroy_user_session_path, class:"nav-link", method: :delete) %></li>
-      <li class="nav-item"><%= link_to "Мой аккаунт", subjects_path,  class:"nav-link" %></li>
+      <li class="nav-item"><%= link_to "Мой аккаунт", edit_user_registration_path,  class:"nav-link" %></li>      
+      <li class="nav-item"><%= link_to 'Выйти', destroy_user_session_path, class:"nav-link", method: :delete %></li>
       <% else %>
       <li class="nav-item"><%= link_to "Зарегистрироваться", new_user_registration_path, class:"nav-link" %></li>
       <li class="nav-item"><%= link_to "Войти", new_user_session_path, class:"nav-link" %></li>
