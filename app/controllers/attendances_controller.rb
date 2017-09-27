@@ -17,15 +17,15 @@ class AttendancesController < ApplicationController
     client_seconds = new_time.seconds_since_midnight
     in_progress = range === client_seconds
     if in_circle
-      if in_progress
+      # if in_progress
         if @attendance.save!
           render json: @attendance, status: :created
         else
           head(:unprocessable_entity)
         end
-      else
-        render json: {faile: 'Время проверки пока не началось или уже прошло'}, status: :forbidden
-      end
+      # else
+      #   render json: {faile: 'Время проверки пока не началось или уже прошло'}, status: :forbidden
+      # end
     else
       render json: {faile: 'Не надо так. Вы не в радиусе класса'}, status: :forbidden
     end
