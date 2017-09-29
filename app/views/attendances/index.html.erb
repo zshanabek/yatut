@@ -1,5 +1,6 @@
 <h1>Список посещаемости</h1>
-
+<h2>Название события: <%= @subject.name %></h2>
+<% if @attendances.any? %>
 <table class="table table-hovered table-bordered">
   <thead>
     <tr>
@@ -10,17 +11,21 @@
   </thead>
 
   <tbody>
-    <% @attendances.each do |attendance| %>
-      <tr>
-        <td><%= attendance.first_name %></td>
-        <td><%= attendance.last_name %></td>
-        <td><%= attendance.created_at %></td>
-      </tr>
-    <% end %>
+      <% @attendances.each do |attendance| %>
+        <tr>
+          <td><%= attendance.first_name %></td>
+          <td><%= attendance.last_name %></td>
+          <td><%= attendance.created_at %></td>
+        </tr>
+      <% end %>
   </tbody>
 </table>
+<% else %>
+  <p>Посещаемости нету</p>
+<% end %>
 <br>
-<%= link_to 'Предметы', subjects_path %>
+<%= link_to "Назад", :back %>
+
 
 
 

@@ -32,6 +32,7 @@ class AttendancesController < ApplicationController
   end
 
   def index
+    @subject = Subject.find(params[:subject_id])
     @attendances = current_subject.attendances.order('created_at ASC')
     respond_to do |format|
       format.html { render :index }
