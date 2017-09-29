@@ -10,7 +10,9 @@
   <style>
     nav a { color: white; }
     nav a:hover { color: #4CCFF3; }
-    
+    nav{
+      margin-bottom: 1rem;
+    }
   </style>
   <body>
   <nav style="background-color:#34495e;" class="navbar">
@@ -28,8 +30,12 @@
     </ul>
   </nav>
         <div class="container">
-        <p class="notice "><%= notice%></p>
-        <p class="alert"><%= alert%></p>
+        <% if alert %>
+          <p class="alert alert-warning" role="alert"><%= alert%></p>
+        <% end%>
+        <% if notice %>
+          <p class="alert alert-success" role="alert"><%= notice%></p>
+        <% end%>
       <%= yield %>
     </div>
   </body>
