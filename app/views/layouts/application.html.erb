@@ -20,7 +20,7 @@
 
     <ul class="nav">
       <% if user_signed_in? %>
-      <li class="nav-item"><%= link_to 'Предметы', subjects_path, class:"nav-link" %></li>
+      <li class="nav-item"><%= link_to 'События', subjects_path, class:"nav-link" %></li>
       <li class="nav-item"><%= link_to "Мой аккаунт", edit_user_registration_path,  class:"nav-link" %></li>      
       <li class="nav-item"><%= link_to 'Выйти', destroy_user_session_path, class:"nav-link", method: :delete %></li>
       <% else %>
