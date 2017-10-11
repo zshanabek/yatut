@@ -10,6 +10,7 @@
     </ul>
   </div>
 <% end %>
+<div class="row">
 <div class="col-md-4">
 <div class="field">
   <%= form.label 'Название' %>
@@ -66,15 +67,21 @@
   <%= form.number_field :radius, class: "form-control", id:"radius", required: true %>
 </div>
 
-
-<div style='width: 348; margin-top: 20px;'>
-  <div id="map" style='width: 348px; height: 348px;'></div>
-</div>
-
-
 <div class="actions">
   <%= form.submit 'Создать событие', style:"margin: 20px 0 20px 0;", class:"btn btn-primary form-control", id:"submit_button"  %>
 </div>
+
+</div>
+<div class="col-md-6">
+  <div style='margin-top: 20px;'>
+    <div id="map" style='width: 720px; height: 348px;'></div>
+  </div>
+</div>
+
+</div>
+<%= link_to 'Показать', @subject, class:"btn btn-info" %> 
+
+<%= link_to 'Назад', subjects_path, class:"btn btn-primary" %>
 
 <% end %>
 </div>

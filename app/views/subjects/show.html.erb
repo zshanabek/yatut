@@ -38,18 +38,19 @@
   <%= @subject.end_time.strftime("%H:%M") %>
 </p>
 
-<div style='width: 348px;'>
-  <div id="map" style='width: 348px; height: 348px;'></div>
-</div>
+
+<%= link_to 'Удалить', @subject, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger"  %> 
+<%= link_to 'Редактировать', edit_subject_path(@subject), class:"btn btn-primary" %> 
+<%= link_to 'Назад', subjects_path, class:"btn btn-primary" %>
 </div>
 <div class="col-md-3">
-<%= link_to 'Список посещаемости', subject_attendances_path(@subject), class:"btn btn-primary" %> <br/>
+<%= link_to 'Список посещаемости', subject_attendances_path(@subject), class:"btn btn-info" %> <br/>
+<div >
+  <div id="map" style='margin-top: 20px;width: 700px; height: 348px;'></div>
+</div>
 </div>
 </div>
 
-<%= link_to 'Удалить', @subject, method: :delete, data: { confirm: 'Are you sure?' }  %> |
-<%= link_to 'Редактировать', edit_subject_path(@subject) %> |
-<%= link_to 'Назад', subjects_path %>
 
 <script>
 function initMap(){
