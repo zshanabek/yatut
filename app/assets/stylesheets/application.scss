@@ -13,11 +13,18 @@
  */
 @import "bootstrap";
 
+.screenshot{
+    width: 280px;
+    // position: relative;
+    // left: 8em;
+}
 .alert{
     position: relative;
     bottom: 5px;
     margin-bottom: 0rem!important;
-    width: 400px;
+    width: 300px;
+    left: 50em;
+    top: 0.4em;
 }
 .notice{
     position: relative;

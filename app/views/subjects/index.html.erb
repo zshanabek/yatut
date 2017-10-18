@@ -5,13 +5,14 @@
     <thead>
       <tr>
         <th>Название</th>
+        <th>Адрес</th>        
       </tr>
     </thead>
-
     <tbody>
       <% @subjects.each do |subject| %>
         <tr>
           <td><%= link_to subject.name, subject %></td>
+          <td><%= subject.address %></td>
         </tr>
       <% end %>
     </tbody>
